@@ -1,1 +1,1 @@
-# IstagramClone
+# InstagramClone
