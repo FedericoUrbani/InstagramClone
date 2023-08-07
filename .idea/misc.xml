@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/Post/pom.xml" />
         <option value="$PROJECT_DIR$/User/pom.xml" />
         <option value="$PROJECT_DIR$/discovery-server/pom.xml" />
+        <option value="$PROJECT_DIR$/discovery-server/src/main/resources/archetype-resources/pom.xml" />
       </list>
     </option>
   </component>
