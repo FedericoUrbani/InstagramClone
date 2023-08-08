@@ -37,7 +37,7 @@ public class UserController {
         return filteredUsers;
     }
 
-    @GetMapping("/id/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public UserDTO getById(@PathVariable long id) {
 
