@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,4 +23,12 @@ public class Post implements Serializable {
     private Integer likes;
     private LocalDate createdAt;
     private String imgUrl;
+
+    public Post(String title, String description, Integer likes, LocalDate createdAt, String imgUrl) {
+        this.title = title;
+        this.description = description;
+        this.likes = likes;
+        this.createdAt = createdAt;
+        this.imgUrl = imgUrl;
+    }
 }
