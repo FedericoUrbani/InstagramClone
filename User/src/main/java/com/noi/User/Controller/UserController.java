@@ -14,49 +14,50 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 
-
     @Autowired
     private UserService userService;
 
 
-    /*
-    @RequestMapping("/all")
-    public List<UserDTO> readAll(int pageIndex){
-        final int pageSize =10;
-        Page<UserEntity> list=userService.findAll(PageRequest.of(pageIndex,pageSize));
-        List<UserDTO> listDTO=new ArrayList();
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    List<UserDTO> all() {
+        List<UserEntity> allUsers = userService.listAll();
 
-        for (UserEntity ue: list){
-            listDTO.add(new UserDTO(
-                    ue.getUsername(),
-                    ue.getEmail()
-            ));
-        }
-        return listDTO;
+        List<UserDTO> filteredUsers = allUsers.stream()
+                .map(userEntity -> new UserDTO(userEntity.getId(), userEntity.getUsername(), userEntity.getEmail(), userEntity.getCreatedAt()))
+                .collect(Collectors.toList());
 
-    }*/
-
-    @RequestMapping("/{id}")
-    public UserDTO getById(@PathVariable long id) {
-
-      return userService.getById(id);
+        return filteredUsers;
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO getById(@PathVariable long id) {
+
+        return userService.getById(id);
+    }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(
-            @RequestParam(value="username") String username,
-            @RequestParam(value = "email" )String email,
+            @RequestParam(value = "username") String username,
+            @RequestParam(value = "email") String email,
             @RequestParam(value = "password") String password) {
 
-    userService.create(username, email, password);
+        userService.create(username, email, password);
 
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(Long id) {
+        userService.delete(id);
     }
 }

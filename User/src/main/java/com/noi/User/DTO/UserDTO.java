@@ -18,8 +18,10 @@ public class UserDTO {
     private String email;
     private LocalDateTime createdAt;
 
-    public UserDTO(String username, String email) {
+   /* public UserDTO(Long id, String username, String email, LocalDateTime createdAt) {
+        this.id = id;
         this.username = username;
         this.email = email;
-    }
+        this.createdAt = createdAt;
+    }*/
 }

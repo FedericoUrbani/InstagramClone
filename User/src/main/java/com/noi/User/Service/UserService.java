@@ -29,8 +29,10 @@ public class UserService {
                 new RuntimeException()); // UserNotFoundExcpetion
 
         UserDTO dto = UserDTO.builder()
+                .id(foundentity.getId())
                 .email(foundentity.getEmail())
                 .username(foundentity.getUsername())
+                .createdAt(foundentity.getCreatedAt())
                 .build();
 
         return dto;
@@ -55,7 +57,7 @@ public class UserService {
     }
 
     public List<UserEntity> listAll() {
-        return (List<UserEntity>) userRepository.findAll();
+        return userRepository.findAll();
     }
 }
 
