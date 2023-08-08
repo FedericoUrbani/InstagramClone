@@ -8,10 +8,10 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-    Page<UserEntity> findByUsername(String lastname, Pageable pageable);
+    //Page<UserEntity> findByUsername(String lastname, Pageable pageable);
 
-    Optional<UserEntity> findByEmail(String email);
+    //Optional<UserEntity> findByEmail(String email);
 
-    Page<UserEntity> findAll(Pageable page);
+    //Page<UserEntity> findAll(Pageable page);
 
 }

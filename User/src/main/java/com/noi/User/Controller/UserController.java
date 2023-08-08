@@ -17,13 +17,20 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/user")
 public class UserController {
 
 
     @Autowired
     private UserService userService;
 
+
+
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    List<UserEntity> all() {
+        List<UserEntity> allUsers = userService.listAll();
+        return allUsers;
+    }
 
     /*
     @RequestMapping("/all")
@@ -42,13 +49,15 @@ public class UserController {
 
     }*/
 
-    @RequestMapping("/{id}")
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public UserDTO getById(@PathVariable long id) {
 
       return userService.getById(id);
     }
 
-
+    //Checked
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(

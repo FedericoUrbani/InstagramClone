@@ -55,7 +55,7 @@ public class UserService {
     }
 
     public List<UserEntity> listAll() {
-        return (List<UserEntity>) userRepository.findAll();
+        return userRepository.findAll();
     }
 }
 
