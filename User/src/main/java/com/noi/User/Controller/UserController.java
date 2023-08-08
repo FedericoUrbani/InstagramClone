@@ -56,6 +56,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
     public void delete(Long id) {
         userService.delete(id);
     }
