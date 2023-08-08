@@ -9,15 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    @Query("SELECT p FROM PostEntity p ORDER BY p.likes DESC")
-    Page<Post> findMostLikedPosts(Pageable pageable);
-
-    @Query("SELECT p FROM PostEntity p ORDER BY p.createdAt DESC")
-    Page<Post> findLatestPosts(Pageable pageable);
-
     Page<Post> findAllByOrderByCreatedAtDesc(Pageable page);
 
-    Page<Post> findAllByOrderByLikesDesc(Pageable page);
 
 
 }
