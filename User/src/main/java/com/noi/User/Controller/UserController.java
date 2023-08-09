@@ -44,16 +44,24 @@ public class UserController {
         return userService.getById(id);
     }
 
+//    @PostMapping("/create")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void createUser(
+//            @RequestParam(value = "username") String username,
+//            @RequestParam(value = "email") String email,
+//            @RequestParam(value = "password") String password) {
+//
+//        userService.create(username, email, password);
+//
+//    }
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(
-            @RequestParam(value = "username") String username,
-            @RequestParam(value = "email") String email,
-            @RequestParam(value = "password") String password) {
+    public void createUser(@RequestBody UserEntity userEntity) {
 
-        userService.create(username, email, password);
+        userService.save(userEntity);
 
     }
+    
 
     @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.OK)

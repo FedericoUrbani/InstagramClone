@@ -41,7 +41,10 @@ public class UserService {
     public void create(String username, String email, String password) {
 
 
-        UserEntity userEntity = new UserEntity( username,  email,  password, LocalDateTime.now(), true);
+        UserEntity userEntity = new UserEntity( username,  email,  password);
+        
+        userEntity.setCreatedAt(LocalDateTime.now());
+        userEntity.setActive(true);
 
          userRepository.save(userEntity);
 
@@ -58,6 +61,10 @@ public class UserService {
 
     public List<UserEntity> listAll() {
         return userRepository.findAll();
+    }
+    
+    public UserEntity save(UserEntity userEntity) {
+    	return  userRepository.save(userEntity);
     }
 }
 

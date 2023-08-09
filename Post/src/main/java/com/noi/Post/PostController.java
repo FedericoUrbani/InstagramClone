@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import com.noi.User.Entity.UserEntity;
+
 import java.util.List;
 
 @RestController
@@ -15,19 +17,21 @@ public class PostController {
     @Autowired
     private PostServiceImpl postService;
 
-    @GetMapping("/all")
-    public List<PostDTO> readAll(@RequestParam(value = "pageindex") Integer index){
+    @GetMapping
+    public List<PostDTO> readAll(@RequestParam(value = "pageIndex") Integer index){
         return postService.readAll(index);
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void create(
-            @RequestParam(value="title") String title,
-            @RequestParam(value ="description")String description,
-            @RequestParam(value = "imgUrl") String imgUrl) {
+    		@RequestParam(value = "id") Long id,
+    		@RequestBody Post post) {
+//            @RequestParam(value="title") String title,
+//            @RequestParam(value ="description")String description,
+//            @RequestParam(value = "imgUrl") String imgUrl) {
 
-        postService.create(title,description,imgUrl);
+        postService.create(id, post);
 
     }
 
