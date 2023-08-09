@@ -16,4 +16,8 @@ public interface PostService {
     void create(String title, String description, String imgUrl);
 
     public void delete(Long id);
+
+    public PostDTO fullUpdate (Long id, PostDTO postDTO);
+
+    public PostDTO findById (Long id);
 }

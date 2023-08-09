@@ -31,5 +31,21 @@ public class PostController {
 
     }
 
+    @DeleteMapping("/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(Long id) {
+        postService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public PostDTO update(@PathVariable("id")Long id, @RequestBody PostDTO postDTO){
+        return postService.fullUpdate(id,postDTO);
+    }
+
+    @GetMapping("/{id}")
+    public PostDTO readById(@PathVariable("id") Long id){
+    return postService.findById(id);
+    }
     //to-do: delete, update, readByPostId, "create userRelation with method getPostsByUserId"
 }
