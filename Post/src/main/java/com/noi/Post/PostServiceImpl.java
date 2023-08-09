@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.noi.User.Entity.UserEntity;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,7 +38,8 @@ private PostRepository repository;
                     postEntity.getTitle(),
                     postEntity.getDescription(),
                     postEntity.getLikes(),
-                    postEntity.getImgUrl());
+                    postEntity.getImgUrl(),
+                    postEntity.getUserId());
 
             return postDto;
         });
@@ -52,8 +55,8 @@ private PostRepository repository;
 
 
     @Transactional
-    public void create(String title, String description, String imgUrl) {
-        Post newPost = new Post(title, description, 0, LocalDate.now(),imgUrl);
+    public void create(Long user, Post post) {
+        Post newPost = new Post(user, post.getTitle(), post.getDescription(), post.getImgUrl());
         repository.save(newPost);
     }
 

@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.noi.User.Entity.UserEntity;
+
 import java.util.List;
 
 @Service
@@ -13,7 +15,9 @@ public interface PostService {
 
     public Page<Post> findLatestPosts(int pageElements);
 
-    void create(String title, String description, String imgUrl);
+    void create(Long user, Post post);
+    
+    //public List<PostDTO> getPostFromUser();
 
     public void delete(Long id);
 

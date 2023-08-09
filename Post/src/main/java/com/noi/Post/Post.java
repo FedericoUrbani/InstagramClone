@@ -6,8 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.noi.User.Entity.UserEntity;
+
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="posts")
@@ -22,6 +26,11 @@ public class Post implements Serializable {
     private String title;
     private String description;
     private Integer likes;
+    
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+    private Long userId;
+    
     private LocalDate createdAt;
     private String imgUrl;
     /*
@@ -30,11 +39,12 @@ public class Post implements Serializable {
     private UserEntity user;
     */
 
-    public Post(String title, String description, Integer likes, LocalDate createdAt, String imgUrl) {
+    public Post(Long userId, String title, String description, String imgUrl) {
+    	this.userId = userId;
         this.title = title;
         this.description = description;
-        this.likes = likes;
-        this.createdAt = createdAt;
+        this.likes = 0;
+        this.createdAt = LocalDate.now();
         this.imgUrl = imgUrl;
     }
 }
