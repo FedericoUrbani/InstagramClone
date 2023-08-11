@@ -27,8 +27,8 @@ public class UserEntity implements Serializable {
     private LocalDateTime createdAt;
     private boolean isActive;
 
-<<<<<<< Updated upstream
-    /** da risolvere. Genera circular Dependecy se importi nel pom entrambe le dependecy.
+    /* Updated upstream
+     da risolvere. Genera circular Dependecy se importi nel pom entrambe le dependecy.
         User possiede Post
         Post possiede User
         Genera: User -> Post -> User...
@@ -43,10 +43,8 @@ public class UserEntity implements Serializable {
     @OneToMany(mappedBy="userEntity",cascade = CascadeType.PERSIST)
     private List<Post> posts;
      */
-    public UserEntity(String username, String email, String password, LocalDateTime createdAt, boolean isActive) {
-=======
+   
     public UserEntity(String username, String email, String password) {
->>>>>>> Stashed changes
         this.username = username;
         this.password = password;
         this.email = email;
